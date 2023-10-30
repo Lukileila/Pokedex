@@ -1,2 +1,2 @@
 # Pokedex
-Team Rockets Pokedex.
+Team Rocket's Pokedex.

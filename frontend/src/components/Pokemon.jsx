@@ -1,3 +1,5 @@
+import {[...]} from "./backend/pokedex.json"
+
 
 const Pokemon = (props) => {
   const { name, image, attack, defense, speed } = props;

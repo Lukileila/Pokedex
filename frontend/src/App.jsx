@@ -27,32 +27,32 @@ const App = () => {
     const randomId2 = randomId();
 
     try {
-      const [response1, response2] = await Promise.all([
+      const [userResponse, computerResponse] = await Promise.all([
         axios.get(`/${randomId1}`),
         axios.get(`/${randomId2}`),
       ]);
 
       setPlayerPokemon({
-        name: response1.data.name,
-        image: response1.data.image,
-        attack: response1.data.stats.attack,
-        defense: response1.data.stats.defense,
-        speed: response1.data.stats.speed,
+        name: userResponse.data.name,
+        image: userResponse.data.image,
+        attack: userResponse.data.stats.attack,
+        defense: userResponse.data.stats.defense,
+        speed: userResponse.data.stats.speed,
       });
 
       setComputerPokemon({
-        name: response2.data.name,
-        image: response2.data.image,
-        attack: response2.data.stats.attack,
-        defense: response2.data.stats.defense,
-        speed: response2.data.stats.speed,
+        name: computerResponse.data.name,
+        image: computerResponse.data.image,
+        attack: computerResponse.data.stats.attack,
+        defense: computerResponse.data.stats.defense,
+        speed: computerResponse.data.stats.speed,
       });
 
       if (
         playerPokemon.attack + playerPokemon.defense + playerPokemon.speed >
         computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
       ) {
-        setWinStatus('Player Wins!');
+        setWinStatus('You win!');
       } else if (
         playerPokemon.attack + playerPokemon.defense + playerPokemon.speed <
         computerPokemon.attack + computerPokemon.defense + computerPokemon.speed

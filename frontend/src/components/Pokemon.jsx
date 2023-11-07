@@ -1,4 +1,3 @@
-import {[...]} from "./backend/pokedex.json"
 
 
 const Pokemon = (props) => {

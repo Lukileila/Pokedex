@@ -1,11 +1,10 @@
-import  { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Pokemon from './components/Pokemon.jsx';
+import Pokemon from './components/PokemonFight.jsx';
 
 const App = () => {
   const [playerPokemon, setPlayerPokemon] = useState({
     name: 'Name',
-    
     attack: 0,
     defense: 0,
     speed: 0,
@@ -22,32 +21,45 @@ const App = () => {
 
   const randomId = () => Math.floor(Math.random() * 898);
 
-  const fight = async () => {
-    const randomId1 = randomId();
-    const randomId2 = randomId();
-
+  const getPokemon = async () => {
     try {
-      const [userResponse, computerResponse] = await Promise.all([
-        axios.get(`/${randomId1}`),
-        axios.get(`/${randomId2}`),
-      ]);
+      // const [userResponse, computerResponse] = await Promise.all([
+      //   axios.get(`http://localhost:3000/pokemon/${randomId1}`),
+      //   axios.get(`http://localhost:3000/pokemon/${randomId2}`),
+      // ]);
+      
+      const {data: userResponse} = await axios.get(`http://localhost:3000/pokemon/${randomId()}`);
+      const {data: computerResponse} = await axios.get(`http://localhost:3000/pokemon/${randomId()}`);
+    
+
+      console.log(userResponse)
+      console.log(computerResponse)
 
       setPlayerPokemon({
-        name: userResponse.data.name,
-        image: userResponse.data.image,
-        attack: userResponse.data.stats.attack,
-        defense: userResponse.data.stats.defense,
-        speed: userResponse.data.stats.speed,
+        name: userResponse.name.english,
+        image: userResponse.sprites.front,
+        attack: userResponse.base.Attack,
+        defense: userResponse.base.Defense,
+        speed: userResponse.base.Speed,
       });
 
       setComputerPokemon({
-        name: computerResponse.data.name,
-        image: computerResponse.data.image,
-        attack: computerResponse.data.stats.attack,
-        defense: computerResponse.data.stats.defense,
-        speed: computerResponse.data.stats.speed,
+        name: computerResponse.name.english,
+        image: computerResponse.sprites.front,
+        attack: computerResponse.base.Attack,
+        defense: computerResponse.base.Defense,
+        speed: computerResponse.base.Speed,
       });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  useEffect(() => {
+    getPokemon();
+  }, [])
+
+  const fight = () => {
       if (
         playerPokemon.attack + playerPokemon.defense + playerPokemon.speed >
         computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
@@ -61,10 +73,7 @@ const App = () => {
       } else {
         setWinStatus('Tie!');
       }
-    } catch (error) {
-      console.error(error);
     }
-  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
@@ -75,8 +84,9 @@ const App = () => {
           <Pokemon {...computerPokemon} />
         </div>
         <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="flex items-center mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           onClick={fight}
+          disabled={playerPokemon.name === 'Name'}
         >
           FIGHT!
         </button>

@@ -2,8 +2,12 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-
+require('dotenv').config();
 const allPokemon = require('./pokedex.json');
+const mongoClient = require("../backend/mongoDB");
+
+mongoClient();
+
 
 //Middlewares:
 app.use(cors()); // sets origin to all by default and thus enables Cross-Origin Resource Sharing (CORS)
@@ -21,5 +25,7 @@ app.route('/pokemon/:id').get((req, res) => {
 app.listen(port, () =>
   console.log(`Server listening on port ${port}!`)
 );
+
+
 
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Pokemon from './components/PokemonFight.jsx';
+import PokeBG from '../src/assets/images/PokeBG.jpeg'; 
 
 const App = () => {
   const [playerPokemon, setPlayerPokemon] = useState({
@@ -37,6 +38,7 @@ const App = () => {
 
       setPlayerPokemon({
         name: userResponse.name.english,
+        type: userResponse.type,
         image: userResponse.sprites.front,
         attack: userResponse.base.Attack,
         defense: userResponse.base.Defense,
@@ -45,6 +47,7 @@ const App = () => {
 
       setComputerPokemon({
         name: computerResponse.name.english,
+        type: computerResponse.type,
         image: computerResponse.sprites.front,
         attack: computerResponse.base.Attack,
         defense: computerResponse.base.Defense,
@@ -64,21 +67,25 @@ const App = () => {
         playerPokemon.attack + playerPokemon.defense + playerPokemon.speed >
         computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
       ) {
-        setWinStatus('You win!');
+        setWinStatus(`Your ${playerPokemon.name} wins!`);
       } else if (
         playerPokemon.attack + playerPokemon.defense + playerPokemon.speed <
         computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
       ) {
-        setWinStatus('Computer Wins!');
+        setWinStatus(`Computer's ${computerPokemon.name} Wins!`);
       } else {
         setWinStatus('Tie!');
       }
     }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded shadow-lg">
-        <h1 className="text-2xl font-semibold mb-4">PokéFight</h1>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover"
+      style={{
+        backgroundImage: `url(${PokeBG})`,
+      }}
+    >      <div className="max-w-md w-full p-6 bg-white rounded shadow-lg">
+        <h1 className="text-2xl font-semibold mb-4  ">PokéFight</h1>
         <div className="flex space-x-4">
           <Pokemon {...playerPokemon} />
           <Pokemon {...computerPokemon} />

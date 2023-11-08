@@ -1,11 +1,11 @@
-import  { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Pokemon from './components/Pokemon.jsx';
+import Pokemon from './components/PokemonFight.jsx';
+import PokeBG from '../src/assets/images/PokeBG.jpeg'; 
 
 const App = () => {
   const [playerPokemon, setPlayerPokemon] = useState({
     name: 'Name',
-    
     attack: 0,
     defense: 0,
     speed: 0,
@@ -22,61 +22,78 @@ const App = () => {
 
   const randomId = () => Math.floor(Math.random() * 898);
 
-  const fight = async () => {
-    const randomId1 = randomId();
-    const randomId2 = randomId();
-
+  const getPokemon = async () => {
     try {
-      const [response1, response2] = await Promise.all([
-        axios.get(`/${randomId1}`),
-        axios.get(`/${randomId2}`),
-      ]);
+      // const [userResponse, computerResponse] = await Promise.all([
+      //   axios.get(`http://localhost:3000/pokemon/${randomId1}`),
+      //   axios.get(`http://localhost:3000/pokemon/${randomId2}`),
+      // ]);
+      
+      const {data: userResponse} = await axios.get(`http://localhost:3000/pokemon/${randomId()}`);
+      const {data: computerResponse} = await axios.get(`http://localhost:3000/pokemon/${randomId()}`);
+    
+
+      console.log(userResponse)
+      console.log(computerResponse)
 
       setPlayerPokemon({
-        name: response1.data.name,
-        image: response1.data.image,
-        attack: response1.data.stats.attack,
-        defense: response1.data.stats.defense,
-        speed: response1.data.stats.speed,
+        name: userResponse.name.english,
+        type: userResponse.type,
+        image: userResponse.sprites.front,
+        attack: userResponse.base.Attack,
+        defense: userResponse.base.Defense,
+        speed: userResponse.base.Speed,
       });
 
       setComputerPokemon({
-        name: response2.data.name,
-        image: response2.data.image,
-        attack: response2.data.stats.attack,
-        defense: response2.data.stats.defense,
-        speed: response2.data.stats.speed,
+        name: computerResponse.name.english,
+        type: computerResponse.type,
+        image: computerResponse.sprites.front,
+        attack: computerResponse.base.Attack,
+        defense: computerResponse.base.Defense,
+        speed: computerResponse.base.Speed,
       });
-
-      if (
-        playerPokemon.attack + playerPokemon.defense + playerPokemon.speed >
-        computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
-      ) {
-        setWinStatus('Player Wins!');
-      } else if (
-        playerPokemon.attack + playerPokemon.defense + playerPokemon.speed <
-        computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
-      ) {
-        setWinStatus('Computer Wins!');
-      } else {
-        setWinStatus('Tie!');
-      }
     } catch (error) {
       console.error(error);
     }
   };
 
+  useEffect(() => {
+    getPokemon();
+  }, [])
+
+  const fight = () => {
+      if (
+        playerPokemon.attack + playerPokemon.defense + playerPokemon.speed >
+        computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
+      ) {
+        setWinStatus(`Your ${playerPokemon.name} wins!`);
+      } else if (
+        playerPokemon.attack + playerPokemon.defense + playerPokemon.speed <
+        computerPokemon.attack + computerPokemon.defense + computerPokemon.speed
+      ) {
+        setWinStatus(`Computer's ${computerPokemon.name} Wins!`);
+      } else {
+        setWinStatus('Tie!');
+      }
+    }
+
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="max-w-md w-full p-6 bg-white rounded shadow-lg">
-        <h1 className="text-2xl font-semibold mb-4">PokéFight</h1>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover"
+      style={{
+        backgroundImage: `url(${PokeBG})`,
+      }}
+    >      <div className="max-w-md w-full p-6 bg-white rounded shadow-lg">
+        <h1 className="text-2xl font-semibold mb-4  ">PokéFight</h1>
         <div className="flex space-x-4">
           <Pokemon {...playerPokemon} />
           <Pokemon {...computerPokemon} />
         </div>
         <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="flex items-center mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           onClick={fight}
+          disabled={playerPokemon.name === 'Name'}
         >
           FIGHT!
         </button>

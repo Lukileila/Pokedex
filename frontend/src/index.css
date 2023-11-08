@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    @font-face {
+        font-family: "Pokemon GB";
+        src: url(../src/assets/fonts/pokemon_fire_red.ttf);
+    }
+
+}
+
+html {
+    font-family: "Pokemon GB";
+}

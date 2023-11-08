@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        pokemon: ['Pokemon GB', 'sans-serif'], // 'Pokemon GB' is the font name
+        pokemon: ['Pokemon GB', 'sans-serif'],
       },
     },
   },

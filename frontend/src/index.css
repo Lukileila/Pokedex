@@ -5,12 +5,12 @@
 
 @layer base {
     @font-face {
-        font-family: "Pokemon GB";
+        font-family: 'Pokemon GB';
         src: url(../src/assets/fonts/pokemon_fire_red.ttf);
     }
 
 }
 
 html {
-    font-family: "Pokemon GB";
+    font-family: 'Pokemon GB';
 }

@@ -47,19 +47,20 @@ const App = () => {
 
 console.log("Hi from App");
 return (
-  <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Layout/>}>
+  <Layout>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Pokedex/> }/>
         <Route index element={<Pokedex/>} />
-{/*     <Route path="pokedex"        element={<Pokedex/>}/>     
+  {/*    <Route path="pokedex"        element={<Pokedex/>}/>     
         <Route path='pokedex/:pokemonid'  element={<ProductPage />}              /> */}
         <Route path="arena"          element={<Arena/>}/>      {/*        
         <Route path="leaderboard"    element={<Leaderboard/>}/>      
         <Route path="account"    element={<Account/>}/>           */}
         <Route path="*" element={<Error/>} />        
-      </Route>
-    </Routes>
-  </BrowserRouter>
+      </Routes>
+    </BrowserRouter>
+  </Layout>
 )
 };
 

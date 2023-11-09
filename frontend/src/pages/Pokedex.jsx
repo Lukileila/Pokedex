@@ -1,4 +1,6 @@
 export default function Pokedex(){    
+   console.log("hi from pokedex");
+   
     return (
     <>
     <div>

@@ -1,7 +1,10 @@
+/* import {Children} from 'react'; */
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-export default function Layout(){    
+export default function Layout({children}){    
+
+    console.log("hi from layout");
     return (
     <>
         <Navbar />

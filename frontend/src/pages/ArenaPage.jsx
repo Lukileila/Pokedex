@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Pokemon from './components/PokemonFight.jsx';
-import PokeBG from '../src/assets/images/PokeBG.jpeg'; 
+import Pokemon from '../components/PokemonFight.jsx';
+import PokeBG from '../assets/images/PokeBG.jpeg'; 
 
 const Arena = () => {
   const [playerPokemon, setPlayerPokemon] = useState({
@@ -29,8 +29,8 @@ const Arena = () => {
       //   axios.get(`http://localhost:3000/pokemon/${randomId2}`),
       // ]);
       
-      const {data: userResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon//${randomId()}`);
-      const {data: computerResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon//${randomId()}`);
+      const {data: userResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon/${randomId()}`);
+      const {data: computerResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon/${randomId()}`);
     
 
       console.log(userResponse)

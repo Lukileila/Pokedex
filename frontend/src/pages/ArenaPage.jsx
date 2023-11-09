@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Pokemon from './components/PokemonFight.jsx';
-import PokeBG from '../src/assets/images/PokeBG.jpeg'; 
+import Pokemon from '../components/PokemonFight.jsx';
+import PokeBG from '../assets/images/PokeBG.jpeg'; 
 
 const Arena = () => {
   const [playerPokemon, setPlayerPokemon] = useState({

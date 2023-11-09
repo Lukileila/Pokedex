@@ -1,6 +1,3 @@
- import Card from '../components/Card.jsx';
-
-
 export default function Leaderboard(){    
    console.log("hi from pokedex");
    

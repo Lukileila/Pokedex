@@ -3,9 +3,9 @@ import Pokemon from './PokemonFight.jsx';
 
 
 const Card = (props) => {
-    console.log("Props handed to Card component",props);
+/*     console.log("Props handed to Card component",props); */
   const { name, image, attack, defense, speed, type } = props;
-  console.log("name",name)
+/*   console.log("name",name) */
 
   return (
     <div className="bg-white rounded p-4 shadow-lg w-32">

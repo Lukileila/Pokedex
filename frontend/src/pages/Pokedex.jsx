@@ -1,10 +1,15 @@
- import Card from '../components/Card.jsx';
- import Grass from '../assets/images/grass.jpg'; 
+import Card from '../components/Card.jsx'; 
+import Grass from '../assets/images/grass.jpg'; 
+import {useEffect} from 'react';
 
 
-export default function Pokedex(){    
-   console.log("hi from pokedex");
+export default function Pokedex({allPokemon}){    
    
+    console.log("hi from pokedex. All Pokemon:",allPokemon);
+    useEffect(() => {
+    console.log("hi from pokedex. All Pokemon:",allPokemon);},[allPokemon]);
+     
+  
 
    const TestPokemon={
     name: "Testi",
@@ -23,6 +28,7 @@ export default function Pokedex(){
         backgroundImage: `url(${Grass})`,
       }}
     >     <Card {...TestPokemon}/>
+          <Card name={allPokemon[1].name.english}/>
     </div>
     </>
     )

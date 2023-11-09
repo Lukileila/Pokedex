@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 require('dotenv').config();
 const allPokemon = require('./pokedex.json');
 
-
+//changesssss
 //Middlewares:
 app.use(cors()); // sets origin to all by default and thus enables Cross-Origin Resource Sharing (CORS)
 app.use(express.json()); 

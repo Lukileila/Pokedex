@@ -1,7 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import Pokemon from './components/PokemonFight.jsx';
-import PokeBG from '../src/assets/images/PokeBG.jpeg'; 
+// Imports for routing
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// Imports for pages
+import Layout from './components/Layout.jsx';
+import Home from './pages/Home.jsx';
+import Error from './pages/Error.jsx';
+import ProductPage from './pages/ProductPage.jsx';
+// Imports for state management
+import {useState, useEffect} from 'react';
+
+/* const { DEV, BACKEND_URL_DEPLOY, BACKEND_URL_DEV } = import.meta.env;   // Maybe implement later */
 
 const App = () => {
   const [playerPokemon, setPlayerPokemon] = useState({

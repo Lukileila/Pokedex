@@ -29,8 +29,8 @@ const Arena = () => {
       //   axios.get(`http://localhost:3000/pokemon/${randomId2}`),
       // ]);
       
-      const {data: userResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon//${randomId()}`);
-      const {data: computerResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon//${randomId()}`);
+      const {data: userResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon/${randomId()}`);
+      const {data: computerResponse} = await axios.get(`https://lazy-gold-pigeon-hat.cyclic.app/pokemon/${randomId()}`);
     
 
       console.log(userResponse)

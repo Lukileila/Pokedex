@@ -9,7 +9,9 @@ function NavBar () {
             <li><a href="https://www.smogon.com/forums/">Forum</a></li>
         </ul>
         <ul className="flex gap-5">
-            <li>Login</li>
+            <li>
+            <link  >Login</link>    
+            </li>
             <li>Register</li>
         </ul>
     </nav>

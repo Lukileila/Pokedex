@@ -47,8 +47,9 @@ const App = () => {
 
 console.log("Hi from App");
 return (
-  <Layout>
+ 
     <BrowserRouter>
+     <Layout>
       <Routes>
         <Route path='/' element={<Pokedex/> }/>
         <Route index element={<Pokedex/>} />
@@ -59,8 +60,9 @@ return (
         <Route path="account"    element={<Account/>}/>           */}
         <Route path="*" element={<Error/>} />        
       </Routes>
+      </Layout>
     </BrowserRouter>
-  </Layout>
+  
 )
 };
 

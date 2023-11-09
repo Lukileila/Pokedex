@@ -8,7 +8,7 @@ const mongoClient = require("../backend/mongoDB");
 
 mongoClient();
 
-
+//changesssss
 //Middlewares:
 app.use(cors()); // sets origin to all by default and thus enables Cross-Origin Resource Sharing (CORS)
 app.use(express.json()); 

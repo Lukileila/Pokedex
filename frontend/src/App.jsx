@@ -5,9 +5,9 @@ import Layout from './components/Layout.jsx';
 import Error from './pages/Error.jsx';
 import Pokedex from './pages/Pokedex.jsx';
 import Arena from './pages/ArenaPage.jsx';
-/*  Imports commented out as pages don't exist yet
+
 import Leaderboard from './pages/Leaderboard.jsx';
-import Account from './pages/Account.jsx'; */
+import Account from './pages/Account.jsx';
 
 
 // Imports for state management
@@ -55,9 +55,9 @@ return (
         <Route index element={<Pokedex/>} />
   {/*    <Route path="pokedex"        element={<Pokedex/>}/>     
         <Route path='pokedex/:pokemonid'  element={<ProductPage />}              /> */}
-        <Route path="arena"          element={<Arena/>}/>      {/*        
+        <Route path="arena"          element={<Arena/>}/>            
         <Route path="leaderboard"    element={<Leaderboard/>}/>      
-        <Route path="account"    element={<Account/>}/>           */}
+        <Route path="account"    element={<Account/>}/>           
         <Route path="*" element={<Error/>} />        
       </Routes>
       </Layout>

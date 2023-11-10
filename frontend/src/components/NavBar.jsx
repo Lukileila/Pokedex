@@ -1,5 +1,5 @@
 function NavBar () {
-    return (
+   return ( <div><p>navbar</p></div> /*  
     <nav className="flex justify-evenly">
         <ul className="flex justify-around gap-6">
             <li>Home</li>
@@ -14,7 +14,7 @@ function NavBar () {
             </li>
             <li>Register</li>
         </ul>
-    </nav>
+    </nav> */
 )
 }
 

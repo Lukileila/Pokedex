@@ -10,7 +10,7 @@ export default function Pokedex({allPokemon}){
     console.log("hi from pokedex. All Pokemon:",allPokemon);},[allPokemon]);
      
   
-
+/* 
    const TestPokemon={
     name: "Testi",
     type: "Testers",
@@ -18,17 +18,35 @@ export default function Pokedex({allPokemon}){
     attack: 1,
     defense: 2,
     speed: 3,
-    };
+    }; */
 
     return (
     <>
     <div
-      className="min-h-screen flex items-center justify-center bg-cover"
+      className="min-h-screen bg-repeat"
       style={{
         backgroundImage: `url(${Grass})`,
       }}
-    >     <Card {...TestPokemon}/>
-          <Card name={allPokemon[1].name.english}/>
+    >   <div className='h-32'></div>
+        <div className="min-h-screen flex flex-wrap justify-center">
+           {/*  <Card {...TestPokemon}/> */}
+{/*             <Card name={allPokemon[1].name.english}
+              type={allPokemon[0].type}
+              image={allPokemon[0].sprites.front}
+              attack={allPokemon[1].base.Attack}
+              defense={allPokemon[1].base.Defense}
+              speed={allPokemon[1].base.Speed}
+              /> */}
+             {allPokemon.map((Pokemon)=><Card name={Pokemon.name.english}
+              type={Pokemon.type}
+              image={Pokemon.sprites.front}
+              attack={Pokemon.base.Attack}
+              defense={Pokemon.base.Defense}
+              speed={Pokemon.base.Speed} />)}  
+        </div>
+
+
+            
     </div>
     </>
     )

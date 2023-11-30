@@ -4,9 +4,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 require('dotenv').config();
 const allPokemon = require('./pokedex.json');
-const mongoClient = require("../backend/mongoDB");
-
-mongoClient();
 
 //changesssss
 //Middlewares:
@@ -25,7 +22,3 @@ app.route('/pokemon/:id').get((req, res) => {
 app.listen(port, () =>
   console.log(`Server listening on port ${port}!`)
 );
-
-
-
-

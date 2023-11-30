@@ -1,20 +1,17 @@
+import { Link } from "react-router-dom";
+
 function NavBar () {
-   return ( <div><p>navbar</p></div> /*  
-    <nav className="flex justify-evenly">
-        <ul className="flex justify-around gap-6">
-            <li>Home</li>
-            <li>Pokedex</li>
-            <li>Arena</li>
-            <li>Ladder</li>
-            <li><a href="https://www.smogon.com/forums/">Forum</a></li>
-        </ul>
-        <ul className="flex gap-5">
-            <li>
-            <link  >Login</link>    
-            </li>
-            <li>Register</li>
-        </ul>
-    </nav> */
+   return ( 
+    <>
+        <nav className="fixed bg-red-800 border-l-2 border-b-2 border-red-900 md:text-2xl text-white right-0 p-5 rounded-bl-3xl drop-shadow-xl">
+            <ul className="flex justify-around gap-6">
+                <li><Link to='/pokedex'>Pokedex</Link></li>
+                <li><Link to='/arena'>Arena</Link></li>
+                <li><Link to='/leaderboard'>Leaderboard</Link></li>
+                <li><Link to='/account'>Login</Link></li>
+            </ul>
+        </nav>
+    </>
 )
 }
 
